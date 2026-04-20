@@ -1,0 +1,61 @@
+SELECT
+  year, storm_type,
+  COUNT(*) AS total_events
+FROM
+  (
+    SELECT *
+    FROM
+      (
+      SELECT
+        'Hail' AS storm_type,
+        location, 
+        state, 
+        county, 
+        timestamp, 
+        EXTRACT(YEAR FROM timestamp) AS year,
+        EXTRACT(MONTH FROM timestamp) AS month,
+        SAFE_CAST(size AS FLOAT64) AS magnitude
+      FROM bigquery-public-data.noaa_preliminary_severe_storms.hail_reports AS hail_reports
+      )
+    WHERE magnitude IS NOT NULL
+
+    UNION ALL 
+
+    SELECT *
+    FROM
+    (
+      SELECT
+      'tornado' AS storm_type,
+      location, 
+      state, 
+      county, 
+      timestamp, 
+      EXTRACT(YEAR FROM timestamp) AS year, 
+      EXTRACT(MONTH FROM timestamp) AS month,
+      SAFE_CAST(f_scale AS FLOAT64) AS magnitude
+    FROM bigquery-public-data.noaa_preliminary_severe_storms.tornado_reports AS tornado_reports
+    )
+    WHERE magnitude IS NOT NULL
+    UNION ALL
+
+    SELECT *
+    FROM
+    (
+      SELECT
+      'wind' AS storm_type,
+      location, 
+      state, 
+      county, 
+      timestamp, 
+      EXTRACT(YEAR FROM timestamp) AS year, 
+      EXTRACT(MONTH FROM timestamp) AS month,
+      SAFE_CAST(speed AS FLOAT64) AS magnitude 
+    FROM bigquery-public-data.noaa_preliminary_severe_storms.wind_reports AS wind_reports
+    )
+
+    WHERE magnitude IS NOT NULL
+    ORDER BY magnitude
+  )
+
+GROUP BY YEAR, storm_type
+ORDER BY year, storm_type;
