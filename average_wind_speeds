@@ -1,0 +1,6 @@
+SELECT
+  'wind' AS storm_type, 
+  MIN(speed) AS min_speed, 
+  MAX(speed) AS max_speed,
+  ROUND(AVG(speed), 2) AS avg_miles_per_hour
+  FROM `bigquery-public-data.noaa_preliminary_severe_storms.wind_reports`
