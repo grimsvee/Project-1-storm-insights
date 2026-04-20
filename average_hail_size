@@ -1,0 +1,6 @@
+SELECT
+  'Hail' AS storm_type, 
+  ROUND(MIN(size / 100 * 25.4), 2) AS min_size, 
+  ROUND(MAX(size / 100 * 25.4), 2) AS max_size,
+  ROUND(AVG((size / 100) * 25.4), 2) AS avg_size_mm
+FROM `bigquery-public-data.noaa_preliminary_severe_storms.hail_reports`
