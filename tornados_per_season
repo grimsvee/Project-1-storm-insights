@@ -1,0 +1,24 @@
+SELECT *,
+  CASE
+    WHEN month = 1 THEN 'JAN - Winter'
+    WHEN month = 2 THEN 'FEB - Late Winter'
+    WHEN month = 3 THEN 'MAR - Early Spring'
+    WHEN month = 4 THEN 'APR - Spring'
+    WHEN month = 5 THEN 'MAY - Late Spring'
+    WHEN month = 6 THEN 'JUN - Early Summer'
+    WHEN month = 7 THEN 'JUL - Summer'
+    WHEN month = 8 THEN 'AUG - Late Summer'
+    WHEN month = 9 THEN 'SEP - Early Fall'
+    WHEN month = 10 THEN 'OCT - Fall'
+    WHEN month = 11 THEN 'NOV - Late Fall'
+    WHEN month = 12 THEN 'DEC - Early Winter'
+  END AS season
+FROM 
+  (
+  SELECT  
+    COUNT(*) AS tornado_count, 
+    EXTRACT(month FROM timestamp) AS month
+  FROM `bigquery-public-data.noaa_preliminary_severe_storms.tornado_reports`
+  GROUP BY month
+  )
+ORDER BY tornado_count DESC;
