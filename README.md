@@ -16,4 +16,8 @@ An analysis of severe weather events using the Preliminary Severe Storm Reports 
 - How does the frequency of tornado reports compare across seasons?
 
 ## Insights
-Hail events are the most frequently reported, suggesting they should be priorotized in resource allocation and ready planning. Most of the severe weather is localized in Texas, with the states directly north and in the cented of the USA getting their share of severe weather, with Kansas, Nebraska and South Dakota ranking as the next top three states to be prepared for adverse storms.
+- Hail events are the most frequently reported, suggesting they should be prioritized in resource allocation and ready planning.
+- Storm season runs predominantly from April to June, with tornados dramatically peaking in May, suggesting preparedness efforts should be ready and implements ahead of this period.
+- Most of the severe weather is localized in Texas, with the center states directly north of Texas getting their share of severe weather. Kansas, Nebraska and South Dakota rank as the next top three states to be prepared for adverse weather effects.
+- Hail sizes average 35mm, but in some rare instances can reach as high as 177mm.
+- Storm season runs predominantly from April to June, with tornados dramatically peaking in May, suggesting preparedness efforts should be ready and implemented ahead of this period.
